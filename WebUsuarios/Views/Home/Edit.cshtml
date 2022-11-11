@@ -1,0 +1,47 @@
+﻿@model UsuariosBLL.Dto.UsuarioDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+<body>
+    @using (Html.BeginForm("Edit", "Home"))
+    {
+
+        <div class="row">
+            <div class="cold-md-12">
+                @Html.LabelFor(model => model.IdUsuario, htmlAttributes: new { @class = "control-label" })
+                <br />
+                @Html.ValueFor(model => model.IdUsuario)
+                @Html.HiddenFor(model => model.IdUsuario)
+                <br />
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", style = "width:100%" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.FechaNacimento, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.FechaNacimento, new { htmlAttributes = new { Class = "form-control", Type = "date", style = "width:100%", @Value = ViewBag.fecha } })
+                @Html.ValidationMessageFor(model => model.FechaNacimento, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <label class="dropdown selectFI">
+                    @Html.DropDownListFor(model => model.Sexo, (IEnumerable<SelectListItem>)ViewBag.lst, "Seleccione...", new { @id = "Sexo" })
+                </label>
+                @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+
+                <br />
+                <div style="text-align:right;">
+                    <input value="guardar" class="btn btn-primary" type="submit" />
+                </div>
+            </div>
+        </div>
+
+        
+    }
+
+</body>
+

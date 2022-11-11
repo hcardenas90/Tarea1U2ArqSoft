@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UsuariosBLL.Dto.UsuarioDto>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Usuarios</h2>
+<body>
+
+    
+    <div class="row" style="text-align:right;padding:5px;">
+        <a href="~/Home/Create" class="btn btn-primary">Crear Usuario</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Sexo</th>
+                    <th>opciones</th>
+                </tr>
+                @foreach (var Usuario in Model)
+                {
+                <tr>
+                    <td>@Usuario.IdUsuario</td>
+                    <td>@Usuario.Nombre</td>
+                    <td>@Usuario.FechaNacimento.ToString("dd/MM/yyyy")</td>
+                    <td>@Usuario.Sexo</td>
+                    <td><a class="btn btn-default" href="~/Home/Edit/@Usuario.IdUsuario">Editar</a> &nbsp; <a class="btn btn-danger" href="~/Home/Delete/@Usuario.IdUsuario">Eliminar</a></td>
+             
+                    
+                </tr>
+
+
+                }
+            </table>
+
+        </div>
+        
+    </div>
+
+</body>
